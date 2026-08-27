@@ -1,0 +1,23 @@
+{
+  "pointCount": 1564382,
+  "rawPointCount": 8428980,
+  "voxelSizeMeters": 0.015,
+  "localBoundsMin": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "localBoundsMax": [
+    19.82900000002701,
+    58.77000000048429,
+    6.5809999999999995
+  ],
+  "originUtm": [
+    343735.637,
+    5410998.492,
+    -33.622
+  ],
+  "crs": "EPSG:32610",
+  "crsName": "WGS 84 / UTM zone 10N",
+  "sourceFile": "Centennial-Park-Boat-Launch-Moorage-8-26-2026-georeferenced_model.laz"
+}

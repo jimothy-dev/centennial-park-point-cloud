@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Centennial Park Boat Launch &amp; Moorage — Point Cloud</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #0b0f14; overflow: hidden; font-family: -apple-system, Segoe UI, Roboto, sans-serif; }
+  #app { position: relative; width: 100%; height: 100%; }
+  canvas { display: block; }
+
+  #loading {
+    position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    background: #0b0f14; color: #cbd5e1; gap: 14px; z-index: 20;
+  }
+  #loading .bar { width: 280px; height: 6px; background: #1e293b; border-radius: 4px; overflow: hidden; }
+  #loading .fill { height: 100%; width: 0%; background: #38bdf8; transition: width 0.15s ease; }
+  #loading .label { font-size: 13px; opacity: 0.8; }
+  #loading .title { font-size: 16px; font-weight: 600; letter-spacing: 0.2px; }
+
+  #panel {
+    position: absolute; top: 14px; left: 14px; z-index: 10;
+    background: rgba(15, 23, 35, 0.82); backdrop-filter: blur(6px);
+    border: 1px solid rgba(148,163,184,0.15); border-radius: 10px;
+    padding: 14px 16px; color: #e2e8f0; width: 250px;
+    font-size: 13px; box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  }
+  #panel h1 { font-size: 14px; margin: 0 0 2px; font-weight: 600; }
+  #panel .sub { font-size: 11px; color: #93a3b8; margin-bottom: 12px; }
+  #panel .row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 8px 0; }
+  #panel label { color: #cbd5e1; }
+  #panel input[type="range"] { width: 130px; }
+  #panel select, #panel button {
+    background: #1e293b; color: #e2e8f0; border: 1px solid rgba(148,163,184,0.25);
+    border-radius: 6px; padding: 4px 8px; font-size: 12px; cursor: pointer;
+  }
+  #panel button:hover, #panel select:hover { background: #2b3a50; }
+  #panel .stats { margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(148,163,184,0.15); color: #93a3b8; font-size: 11px; line-height: 1.6; }
+  #panel a { color: #38bdf8; text-decoration: none; }
+  #panel a:hover { text-decoration: underline; }
+
+  #hint {
+    position: absolute; bottom: 12px; left: 14px; z-index: 10;
+    color: #93a3b8; font-size: 11px; background: rgba(15,23,35,0.6); padding: 6px 10px; border-radius: 6px;
+  }
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="loading">
+    <div class="title">Loading point cloud…</div>
+    <div class="bar"><div class="fill" id="loadFill"></div></div>
+    <div class="label" id="loadLabel">connecting…</div>
+  </div>
+
+  <div id="panel" style="display:none;">
+    <h1>Centennial Park Boat Launch &amp; Moorage</h1>
+    <div class="sub">Georeferenced survey — 8/26/2026</div>
+
+    <div class="row">
+      <label for="colorMode">Color</label>
+      <select id="colorMode">
+        <option value="rgb">True color</option>
+        <option value="elevation">Elevation</option>
+        <option value="solid">Solid</option>
+      </select>
+    </div>
+
+    <div class="row">
+      <label for="pointSize">Point size</label>
+      <input type="range" id="pointSize" min="0.5" max="6" step="0.1" value="2" />
+    </div>
+
+    <div class="row">
+      <label for="bg">Background</label>
+      <select id="bg">
+        <option value="dark">Dark</option>
+        <option value="light">Light</option>
+      </select>
+    </div>
+
+    <div class="row">
+      <button id="resetView">Reset view</button>
+    </div>
+
+    <div class="stats" id="stats"></div>
+    <div class="stats"><a id="downloadLaz" href="model.laz" download>Download full-res LAZ (30 MB)</a></div>
+  </div>
+
+  <div id="hint">drag to orbit · scroll to zoom · right-drag to pan</div>
+</div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.169.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.169.0/examples/jsm/"
+  }
+}
+</script>
+<script type="module" src="main.js"></script>
+</body>
+</html>
