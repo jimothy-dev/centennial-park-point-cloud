@@ -70,8 +70,9 @@ loader.load(
     controls.enableDamping = true;
     controls.dampingFactor = 0.08;
     controls.screenSpacePanning = true;
-    controls.minDistance = diag * 0.02;
-    controls.maxDistance = diag * 5;
+    controls.zoomSpeed = 1.6;
+    controls.minDistance = diag * 0.002;
+    controls.maxDistance = diag * 10;
     controls.update();
 
     let triCount = 0;
