@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Centennial Park Boat Launch &amp; Moorage — Point Cloud</title>
+<title>Centennial Park Boat Launch &amp; Moorage — 3D Model</title>
 <style>
   html, body { margin: 0; height: 100%; background: #0b0f14; overflow: hidden; font-family: -apple-system, Segoe UI, Roboto, sans-serif; }
   #app { position: relative; width: 100%; height: 100%; }
@@ -29,15 +29,12 @@
   #panel .sub { font-size: 11px; color: #93a3b8; margin-bottom: 12px; }
   #panel .row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 8px 0; }
   #panel label { color: #cbd5e1; }
-  #panel input[type="range"] { width: 130px; }
   #panel select, #panel button {
     background: #1e293b; color: #e2e8f0; border: 1px solid rgba(148,163,184,0.25);
     border-radius: 6px; padding: 4px 8px; font-size: 12px; cursor: pointer;
   }
   #panel button:hover, #panel select:hover { background: #2b3a50; }
   #panel .stats { margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(148,163,184,0.15); color: #93a3b8; font-size: 11px; line-height: 1.6; }
-  #panel a { color: #38bdf8; text-decoration: none; }
-  #panel a:hover { text-decoration: underline; }
 
   #hint {
     position: absolute; bottom: 12px; left: 14px; z-index: 10;
@@ -48,27 +45,21 @@
 <body>
 <div id="app">
   <div id="loading">
-    <div class="title">Loading point cloud…</div>
+    <div class="title">Loading 3D model…</div>
     <div class="bar"><div class="fill" id="loadFill"></div></div>
     <div class="label" id="loadLabel">connecting…</div>
   </div>
 
   <div id="panel" style="display:none;">
     <h1>Centennial Park Boat Launch &amp; Moorage</h1>
-    <div class="sub">Georeferenced survey — 8/26/2026</div>
+    <div class="sub">Georeferenced textured model — 8/26/2026</div>
 
     <div class="row">
-      <label for="colorMode">Color</label>
-      <select id="colorMode">
-        <option value="rgb">True color</option>
-        <option value="elevation">Elevation</option>
-        <option value="solid">Solid</option>
+      <label for="shading">Shading</label>
+      <select id="shading">
+        <option value="textured">Textured</option>
+        <option value="wireframe">Wireframe</option>
       </select>
-    </div>
-
-    <div class="row">
-      <label for="pointSize">Point size</label>
-      <input type="range" id="pointSize" min="0.5" max="6" step="0.1" value="2" />
     </div>
 
     <div class="row">
@@ -84,7 +75,6 @@
     </div>
 
     <div class="stats" id="stats"></div>
-    <div class="stats"><a id="downloadLaz" href="model.laz" download>Download full-res LAZ (30 MB)</a></div>
   </div>
 
   <div id="hint">drag to orbit · scroll to zoom · right-drag to pan</div>
