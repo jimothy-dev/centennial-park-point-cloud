@@ -1,37 +1,31 @@
-# Centennial Park Boat Launch & Moorage — 3D Model Viewer
+# Centennial Park Boat Launch & Moorage — 3D Viewer
 
-Interactive WebGL viewer for a georeferenced, textured photogrammetry mesh
-of the Centennial Park boat launch and moorage, surveyed 2026-08-26.
+Interactive 3D model of the Centennial Park boat launch and moorage, captured
+by drone on August 26, 2026.
 
-**Live site:** (added after first deploy — see repo Pages settings)
+**View it here:** https://jimothy-dev.github.io/centennial-park-point-cloud/
 
-## What's here
+## About the survey
 
-- `model.glb` — the textured mesh, re-exported for the web from the original
-  102 MB source (`EXT_meshopt_compression` geometry + downscaled/re-encoded
-  JPEG textures, 2048px max, quality 82). Final size ~11 MB.
-- `index.html` / `main.js` — a Three.js viewer: orbit/pan/zoom camera,
-  wireframe toggle, dark/light background.
-- `process_textures.mjs` + `resize_texture.py` — the build step that
-  produced `model.glb`: runs the model through `@gltf-transform` (dedup,
-  join, weld, simplify, meshopt-compress) then resizes/re-encodes each
-  baseColor texture with Pillow (the bundled `sharp`/libvips texture step
-  in `gltf-transform optimize` crashes on this machine, so textures are
-  handled out-of-process instead).
+- Flown with a DJI Mini SE. The flight route was plotted in Litchi.
+- The photos were processed into a georeferenced, textured 3D mesh
+  (WGS 84 / UTM zone 10N).
+- The original 102 MB model was compressed to about 11 MB for the web:
+  meshopt geometry compression, plus textures resized to 2048px JPEG.
 
-## Regenerating model.glb
+## Using the viewer
 
-```bash
-py -m venv .venv
-./.venv/Scripts/pip install laspy pillow
-npm install
-npx @gltf-transform/cli optimize <source.glb> model_test.glb --texture-compress false
-node process_textures.mjs model_test.glb model.glb 2048 82
-```
+- Drag to orbit, scroll to zoom, right-drag to pan
+- The panel has a wireframe toggle and a dark/light background switch
 
-## Local development
+## What's in this repo
 
-Any static file server works, e.g.:
+- `index.html`, `main.js` — the viewer, built with Three.js
+- `model.glb` — the compressed model
+
+## Running locally
+
+Any static file server works:
 
 ```bash
 python -m http.server 8000
@@ -39,7 +33,5 @@ python -m http.server 8000
 
 then open `http://localhost:8000`.
 
-## Deploying
-
-This repo is served as-is via GitHub Pages (branch `main`, root). Pushing to
-`main` redeploys automatically.
+The site is served with GitHub Pages from the `main` branch — pushing to
+`main` redeploys it.
