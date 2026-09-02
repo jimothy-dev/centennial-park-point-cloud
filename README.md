@@ -38,6 +38,4 @@ The site is served with GitHub Pages from the `main` branch — pushing to
 
 ## Licence
 
-[GNU General Public License v3.0](LICENSE). Free to use, change and share, including commercially. Anything you distribute that is built on it must stay under the same licence and ship its source.
-
-Copyright (c) 2026 James Simpson
+[GPL-3.0](LICENSE). Copyright (c) 2026 James Simpson.
