@@ -35,3 +35,9 @@ then open `http://localhost:8000`.
 
 The site is served with GitHub Pages from the `main` branch — pushing to
 `main` redeploys it.
+
+## Licence
+
+[GNU General Public License v3.0](LICENSE). Free to use, change and share, including commercially. Anything you distribute that is built on it must stay under the same licence and ship its source.
+
+Copyright (c) 2026 James Simpson
