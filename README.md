@@ -4,9 +4,6 @@ Browser-based 3D viewer for a georeferenced, textured mesh of the Centennial Par
 
 **View it:** https://jimothy-dev.github.io/centennial-park-point-cloud/
 
-![screenshot](docs/screenshot.png)
-<!-- Capture: the viewer after load, angled view showing the ramp and moorage with the control panel open (textured shading, dark background). A second shot in wireframe mode works well as a comparison. -->
-
 ## What it does
 
 - Loads an 11 MB compressed glTF (`model.glb`) and shows it in the browser with orbit, zoom and pan.
